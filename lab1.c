@@ -4,7 +4,6 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <memory.h>
 #include <string.h>
 
 char* readString(char* fileName) {
@@ -33,12 +32,10 @@ char* mysteryExplode(const char* str) {
 
     char *buffer = (char*) malloc(memoryToMalloc * sizeof(char));
 
-    buffer[0] = '\0';
-    char *p = buffer;
-
-    for (size_t i = 0; i < strLength; i++) {
-        *p++ += str[i];
-        *p = '\0';
+    for (size_t i = 0; i <= strLength; i++) {
+        strncpy(buffer, str, i);
     }
+    buffer[memoryToMalloc] = '\0';
+
     return buffer;
 }
