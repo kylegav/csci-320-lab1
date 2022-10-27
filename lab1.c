@@ -32,10 +32,12 @@ char* mysteryExplode(const char* str) {
 
     char *buffer = (char*) malloc(memoryToMalloc * sizeof(char));
 
-    for (size_t i = 0; i <= strLength; i++) {
-        strncpy(buffer, str, i);
-    }
-    buffer[memoryToMalloc] = '\0';
+    buffer[0] = '\0';
+    char *p = buffer;
 
+    for (size_t i = 0; i < strLength; i++) {
+        *p++ += str[i];
+        *p = '\0';
+    }
     return buffer;
 }
