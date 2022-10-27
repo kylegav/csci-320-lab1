@@ -5,10 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lab1.h#
 
 char* readString(char* fileName) {
 
-    char *pInput = (char*) malloc(100 * sizeof(char));
+    char *pInput = (char*) malloc(MAX_LINE_LEN * sizeof(char));
 
     FILE *pFile = fopen(fileName, "r");
     fgets(pInput, 100, pFile);
