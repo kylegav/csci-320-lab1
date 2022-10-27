@@ -43,7 +43,7 @@ char* mysteryExplode(const char* str) {
     char *p = buffer;
 
     for (size_t i = 0; i < strLength; i++) {
-        *p++ = str[i];
+        *p++ += str[i];
         *p = '\0';
     }
     return buffer;
