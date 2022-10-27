@@ -12,7 +12,7 @@ char* readString(char* fileName) {
     char *pInput = (char*) malloc(MAX_LINE_LEN * sizeof(char));
 
     FILE *pFile = fopen(fileName, "r");
-    fgets(pInput, 100, pFile);
+    fgets(pInput, MAX_LINE_LEN, pFile);
 
     if (pInput == NULL) {
         return NULL;
