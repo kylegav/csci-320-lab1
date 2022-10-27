@@ -18,7 +18,6 @@ char* readString(char* fileName) {
         return NULL;
     }
 
-    /* Sorry If this is cheating :( */
     pInput[strcspn(pInput, "\n")] = 0;
 
     fclose(pFile);
@@ -29,13 +28,8 @@ char* mysteryExplode(const char* str) {
     /* Length of input string (4 for 'code') */
     const int strLength = strlen(str);
 
-    /* init as 1 to account for null character :) */
-    int memoryToMalloc = 1;
-    int i = 0;
-    while (i <= strLength) {
-        memoryToMalloc += i;
-        i++;
-    }
+    /* This was an optimization of the while loop*/
+    int memoryToMalloc = ((strLength*(strLength+1))/2);
 
     char *buffer = (char*) malloc(memoryToMalloc * sizeof(char));
 
