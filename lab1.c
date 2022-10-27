@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lab1.h#
+#include "lab1.h"
 
 char* readString(char* fileName) {
 
@@ -29,16 +29,26 @@ char* mysteryExplode(const char* str) {
     const int strLength = strlen(str);
 
     /* This was an optimization of the while loop*/
-    int memoryToMalloc = ((strLength*(strLength+1))/2);
+    int memoryToCalloc = ((strLength*(strLength+1))/2);
 
-    char *buffer = (char*) malloc(memoryToMalloc * sizeof(char));
+    char* pBuffer =calloc(memoryToCalloc,sizeof(char));
 
-    buffer[0] = '\0';
-    char *p = buffer;
-
-    for (size_t i = 0; i < strLength; i++) {
-        *p++ += str[i];
-        *p = '\0';
+    if (pBuffer == NULL) {
+        return NULL;
     }
-    return buffer;
+
+    /*For "code" runs till i=3 0,1,2,3 */
+    for (int i=0; i<strLength; i++)
+    {
+        /* runs till s runs into index i
+         * appends each element to buffer
+         * each loop increases whats appeneded to buffer
+         * Future improvement: Use single forloop and strncpy */
+        for(int s=0; s<=i; s++)
+        {
+            strcpy(pBuffer, strncat(pBuffer, &str[s],1));
+        }
+    }
+
+    return pBuffer;
 }
